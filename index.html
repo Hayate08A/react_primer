@@ -12,23 +12,21 @@
     <div id="root"></div>
     <script type="text/babel">
       (() => {
-        // function showMassage() {
-        //   alert("Hell");
-        // }
+        class Counter extends React.Component {
+          constructor(props) {
+            super(props);
+            this.state = {
+              count: 10,
+            };
+          }
 
-        function countUp(e, color) {
-          e.preventDefault();
-          alert(color);
-        }
-
-        function Counter(props) {
-          return (
-            <li style={{ backgroundColor: props.color }}>
-              <a href="#" onClick={(e) => countUp(e, props.color)}>
-                0
-              </a>
-            </li>
-          );
+          render() {
+            return (
+              <li style={{ backgroundColor: this.props.color }}>
+                {this.state.count}
+              </li>
+            );
+          }
         }
         const name = "adachi";
         ReactDOM.render(
