@@ -12,8 +12,39 @@
     <div id="root"></div>
     <script type="text/babel">
       (() => {
-        ReactDOM.render(<p>Hello!</p>, document.getElementById("root"));
+        // function showMassage() {
+        //   alert("Hell");
+        // }
+
+        function countUp(e, color) {
+          e.preventDefault();
+          alert(color);
+        }
+
+        function Counter(props) {
+          return (
+            <li style={{ backgroundColor: props.color }}>
+              <a href="#" onClick={(e) => countUp(e, props.color)}>
+                0
+              </a>
+            </li>
+          );
+        }
+        const name = "adachi";
+        ReactDOM.render(
+          // 第一引数は1つの要素のみ
+          <div className="container">
+            <ul>
+              <Counter color="tomato" />
+              <Counter color="skyblue" />
+              <Counter color="limegreen" />
+            </ul>
+          </div>,
+          // <div className="box" onClick={showMassage}></div>,
+          document.getElementById("root")
+        );
       })();
     </script>
+    <div onclick=""></div>
   </body>
 </html>
