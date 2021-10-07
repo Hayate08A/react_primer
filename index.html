@@ -16,7 +16,8 @@
           constructor(props) {
             super(props);
             this.state = {
-              count: 10,
+              count: 0,
+              // massage: "hello!",
             };
           }
 
@@ -38,7 +39,6 @@
               <Counter color="limegreen" />
             </ul>
           </div>,
-          // <div className="box" onClick={showMassage}></div>,
           document.getElementById("root")
         );
       })();
