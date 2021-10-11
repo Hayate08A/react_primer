@@ -19,28 +19,14 @@
             </li>
           );
         }
-        // class Counter extends React.Component {
-        //   constructor(props) {
-        //     super(props);
-        //     this.state = {
-        //       count: 0,
-        //     };
-        //     this.countUp = this.countUp.bind(this);
-        //   }
-        //   countUp() {
-        //     this.setState((prevState) => {
-        //       return {
-        //         count: prevState.count + 1,
-        //       };
-        //     });
-        //   }
 
-        //   render() {
-        //     return (
+        function CounterList(props) {
+          const counters = props.counters.map((counter) => {
+            return <Counter counter={counter} key={counter.id} />;
+          });
+          return <ul>{counters}</ul>;
+        }
 
-        //     );
-        //   }
-        // }
         class App extends React.Component {
           constructor() {
             super();
@@ -55,11 +41,7 @@
           render() {
             return (
               <div className="container">
-                <ul>
-                  <Counter counter={this.state.counters[0]} />
-                  <Counter counter={this.state.counters[1]} />
-                  <Counter counter={this.state.counters[2]} />
-                </ul>
+                <CounterList counters={this.state.counters} />
                 <div>TOTAL INVENTORY: </div>
               </div>
             );
