@@ -16,7 +16,9 @@
           return (
             <li
               style={{ backgroundColor: props.counter.color }}
-              onClisk={() => props.countUp(props.counter)}
+              onClick={() => {
+                props.countUp(props.counter);
+              }}
             >
               {props.counter.id}:{props.counter.count}
             </li>
@@ -48,13 +50,32 @@
             };
             this.countUp = this.countUp.bind(this);
           }
-          countUp(constructor) {}
+          countUp(counter) {
+            this.setState((prevState) => {
+              const counters = prevState.counters.map((counter) => {
+                return {
+                  id: counter.id,
+                  count: counter.count,
+                  color: counter.color,
+                };
+              });
+              const pos = counters
+                .map((counter) => {
+                  return counter.id;
+                })
+                .indexOf(counter.id);
+              counters[pos].count++;
+              return {
+                counters: counters,
+              };
+            });
+          }
           render() {
             return (
               <div className="container">
                 <CounterList
                   counters={this.state.counters}
-                  countUp={this.countUp()}
+                  countUp={this.countUp}
                 />
                 <div>TOTAL INVENTORY: </div>
               </div>
